@@ -8,16 +8,16 @@ import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.s
 })
 export class PersonajesComponent  implements OnInit {
   
-  usuarios: any[] = [];
-  constructor(public http:RickyMortyServiceService) { }
+  listaPersonajes: any[] = [];
+  constructor(public servicioRickyMorty:RickyMortyServiceService) { }
 
   ngOnInit() {
-    
+    this.cargarPersonajes();
   }
 
-  cargarUsuarios(){
-    this.http.loadCharacters().subscribe((res: any) => {
-      this.usuarios = res['results'];
+  cargarPersonajes(){
+    this.servicioRickyMorty.loadCharacters().subscribe((res: any) => {
+      this.listaPersonajes = res['results'];
     }, (error) => {
       console.error(error);
     });

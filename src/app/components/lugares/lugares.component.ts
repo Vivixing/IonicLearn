@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
 
 @Component({
   selector: 'app-lugares',
@@ -7,8 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LugaresComponent  implements OnInit {
 
-  constructor() { }
+  listaLugares: any[] = []
+  constructor(public servicioRickyMorty:RickyMortyServiceService) { }
 
-  ngOnInit() {}
+  ngOnInit(  ) {
+    this.cargarLugares();
+  }
 
+  cargarLugares(){
+    this.servicioRickyMorty.loadLocations().subscribe((res:any)=>{
+      this.listaLugares = res['results'];
+    }, (error) => {
+      console.error(error);
+    });
+  }
+  
 }
