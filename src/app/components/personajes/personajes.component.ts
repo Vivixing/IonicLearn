@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
 
 @Component({
@@ -22,6 +23,8 @@ export class PersonajesComponent  implements OnInit {
       console.error(error);
     });
   }
+
+
 
  
 
