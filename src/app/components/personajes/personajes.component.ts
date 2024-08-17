@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
+
 
 @Component({
   selector: 'app-personajes',
@@ -8,9 +8,12 @@ import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.s
   styleUrls: ['./personajes.component.scss'],
 })
 export class PersonajesComponent  implements OnInit {
-  
   listaPersonajes: any[] = [];
-  constructor(public servicioRickyMorty:RickyMortyServiceService) { }
+  constructor(public servicioRickyMorty:RickyMortyServiceService) { 
+    for (let i = 0; i < 20; i++) {
+      this.listaPersonajes.push(this.listaPersonajes.length);
+    }
+  }
 
   ngOnInit() {
     this.cargarPersonajes();
@@ -18,14 +21,18 @@ export class PersonajesComponent  implements OnInit {
 
   cargarPersonajes(){
     this.servicioRickyMorty.loadCharacters().subscribe((res: any) => {
-      this.listaPersonajes = res['results'];
+      this.listaPersonajes = res.results;
     }, (error) => {
       console.error(error);
     });
   }
 
-
-
- 
-
+  cargarScroll(infiniteScroll: any){
+    setTimeout(() => {
+      for (let i = 0; i < 20; i++) {
+        this.listaPersonajes.push( this.listaPersonajes.length );
+      }
+      infiniteScroll.target.complete();
+    }, 500);
+  }
 }

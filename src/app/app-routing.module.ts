@@ -7,11 +7,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'pagina2',
+    path: 'personaje/:id',
     loadChildren: () => import('./pages/pagina2/pagina2.module').then( m => m.Pagina2PageModule)
   },
   {
-    path: 'pagina1',
+    path: 'buscar',
     loadChildren: () => import('./pages/pagina1/pagina1.module').then( m => m.Pagina1PageModule)
   }
 ];

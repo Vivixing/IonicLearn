@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class RickyMortyServiceService {
 
   rutaPersonajes: string = 'https://rickandmortyapi.com/api/character';
+  rutaPersonaje: string = 'https://rickandmortyapi.com/api/character/';
   rutaLugares: string = 'https://rickandmortyapi.com/api/location';
   
   constructor(public http: HttpClient) {  }
@@ -17,5 +18,9 @@ export class RickyMortyServiceService {
 
   loadLocations(){
     return this.http.get(this.rutaLugares);
+  }
+  
+  loadCharacter(id: string){  
+    return this.http.get(this.rutaPersonaje + id);
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
+import { RouterModule } from "@angular/router";
 
 import { PersonajeComponent } from "./personaje/personaje.component";
 import { PersonajesComponent } from "./personajes/personajes.component";
@@ -15,7 +16,8 @@ import { FavoritosComponent } from "./favoritos/favoritos.component";
     FavoritosComponent],
   imports: [
     CommonModule, 
-    IonicModule],
+    IonicModule,
+    RouterModule],
   exports: [
     PersonajeComponent, 
     PersonajesComponent,

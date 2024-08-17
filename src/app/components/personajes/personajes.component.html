@@ -1,16 +1,24 @@
-<ion-grid [fixed]="true">
-  <ion-row>
-    <ion-col size="12" sizeSm="4" *ngFor="let personaje of listaPersonajes">
-      <ion-card>
-        <img alt="Silhouette of mountains" [src]="personaje.image" />
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Lista de Personajes</ion-card-title>
+    <ion-card-subtitle>Personajes Comunes</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let personaje of listaPersonajes" [routerLink]="['/personaje/' + personaje.id]">{{personaje.id }}
+        <ion-thumbnail>
+          <img alt="Silhouette of mountains" [src]="personaje.image"/>
+        </ion-thumbnail>
         <ion-card-header>
           <ion-card-title>{{personaje.name}}</ion-card-title>
           <ion-card-subtitle>{{personaje.species}}</ion-card-subtitle>
         </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-infinite-scroll (ionInfinite)="scrollInfinito($event)">
-    <ion-infinite-scroll-content loadingText="Cargando..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-</ion-grid>
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="cargarScroll($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-card-content>
+</ion-card>
