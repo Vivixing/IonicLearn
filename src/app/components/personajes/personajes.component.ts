@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 
 @Component({
@@ -7,32 +7,21 @@ import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.s
   templateUrl: './personajes.component.html',
   styleUrls: ['./personajes.component.scss'],
 })
-export class PersonajesComponent  implements OnInit {
-  listaPersonajes: any[] = [];
-  constructor(public servicioRickyMorty:RickyMortyServiceService) { 
-    for (let i = 0; i < 20; i++) {
-      this.listaPersonajes.push(this.listaPersonajes.length);
-    }
+export class PersonajesComponent implements OnInit {
+  @Input() listaPersonajes: any[] = [];
+  @Input() titulo:string = '';
+  @Input() subTitulo:string = '';
+
+  constructor() { 
+    
   }
 
   ngOnInit() {
-    this.cargarPersonajes();
+    
   }
 
-  cargarPersonajes(){
-    this.servicioRickyMorty.loadCharacters().subscribe((res: any) => {
-      this.listaPersonajes = res.results;
-    }, (error) => {
-      console.error(error);
-    });
+  irAPersonaje(idPersonaje:number){
+    console.log('IDPERSONAJE',idPersonaje);
   }
 
-  cargarScroll(infiniteScroll: any){
-    setTimeout(() => {
-      for (let i = 0; i < 20; i++) {
-        this.listaPersonajes.push( this.listaPersonajes.length );
-      }
-      infiniteScroll.target.complete();
-    }, 500);
-  }
 }

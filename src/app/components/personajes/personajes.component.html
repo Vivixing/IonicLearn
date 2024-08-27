@@ -1,7 +1,7 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-title>Lista de Personajes</ion-card-title>
-    <ion-card-subtitle>Personajes Comunes</ion-card-subtitle>
+    <ion-card-title> {{titulo}}</ion-card-title>
+    <ion-card-subtitle>{{subTitulo}}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
     <ion-list>
@@ -10,14 +10,14 @@
           <img alt="Silhouette of mountains" [src]="personaje.image"/>
         </ion-thumbnail>
         <ion-card-header>
-          <ion-card-title>{{personaje.name}}</ion-card-title>
+          <ion-card-title (click)="irAPersonaje(personaje.id)">{{personaje.name}}</ion-card-title>
           <ion-card-subtitle>{{personaje.species}}</ion-card-subtitle>
         </ion-card-header>
         <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
       </ion-item>
     </ion-list>
 
-    <ion-infinite-scroll (ionInfinite)="cargarScroll($event)">
+    <ion-infinite-scroll>
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-card-content>
