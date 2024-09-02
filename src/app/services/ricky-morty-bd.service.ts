@@ -17,7 +17,7 @@ export class RickyMortyBdService {
   
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('PERSONAJES_RK',res);
+          console.log('PERSONAJES',res);
           return res;
         })
       );
@@ -29,6 +29,17 @@ export class RickyMortyBdService {
       return this.http.get(url, {}).pipe(
         map((res: any) => {
           console.log('PERSONAJE',res);
+          return res;
+        })
+      );
+    }
+
+    getAllLocations():any{
+      let url = `${URL_RM}/location`;
+
+      return this.http.get(url, {}).pipe(
+        map((res: any) => {
+          console.log('LOCATIONS',res);
           return res;
         })
       );

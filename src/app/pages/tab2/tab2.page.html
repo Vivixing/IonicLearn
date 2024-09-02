@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="ion-text-center">
       Lugares
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-lugares></app-lugares>
+  <app-lugares [listaLugares]="ubicaciones" [titulo]="'Lugares'" [subTitulo]="'RickyAndMorty'"></app-lugares>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Lugares</ion-title>

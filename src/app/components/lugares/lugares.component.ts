@@ -1,26 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-lugares',
   templateUrl: './lugares.component.html',
   styleUrls: ['./lugares.component.scss'],
 })
-export class LugaresComponent  implements OnInit {
+export class LugaresComponent{
 
-  listaLugares: any[] = []
-  constructor(public servicioRickyMorty:RickyMortyServiceService) { }
+  @Input() listaLugares: any[] = [];
+  @Input() titulo:string = '';
+  @Input() subTitulo:string = '';
+  constructor() { }
 
-  ngOnInit(  ) {
-    this.cargarLugares();
-  }
 
-  cargarLugares(){
-    this.servicioRickyMorty.loadLocations().subscribe((res:any)=>{
-      this.listaLugares = res['results'];
-    }, (error) => {
-      console.error(error);
-    });
-  }
   
 }
