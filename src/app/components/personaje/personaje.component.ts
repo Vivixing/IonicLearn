@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
-
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-personaje',
@@ -10,19 +7,12 @@ import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.s
 })
 export class PersonajeComponent  implements OnInit {
 
-  idPersonaje!: string;
-  personaje: any;
+  @Input() personaje: any;
 
-  constructor(private activatedRoute:ActivatedRoute, 
-              private rickyandMortyService:RickyMortyServiceService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.idPersonaje = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.rickyandMortyService.loadCharacter(this.idPersonaje).subscribe((res: any) => {
-      this.personaje = res;
-    }, (error) => { 
-      console.error(error); 
-    });
+   
   }
 
 }

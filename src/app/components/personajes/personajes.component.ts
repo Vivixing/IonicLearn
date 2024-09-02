@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -12,7 +13,7 @@ export class PersonajesComponent implements OnInit {
   @Input() titulo:string = '';
   @Input() subTitulo:string = '';
 
-  constructor() { 
+  constructor(private router:Router) { 
     
   }
 
@@ -22,6 +23,7 @@ export class PersonajesComponent implements OnInit {
 
   irAPersonaje(idPersonaje:number){
     console.log('IDPERSONAJE',idPersonaje);
+    this.router.navigate(['/personaje',idPersonaje]);
   }
 
 }

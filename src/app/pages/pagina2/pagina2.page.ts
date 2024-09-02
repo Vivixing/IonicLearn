@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
 import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
 
 
@@ -10,19 +11,25 @@ import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.s
 })
 export class Pagina2Page implements OnInit {
 
-  nombrePersonaje: string = '';
+  unIdPersonaje!:number;
+  personaje:any;
 
   constructor(private activatedRoute:ActivatedRoute,
-              private rickyandMortyService:RickyMortyServiceService
-   ) { }
-
-  ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.rickyandMortyService.loadCharacter(id).subscribe((res: any) => {
-      this.nombrePersonaje = res.name;
-    }, (error) => { 
-      console.error(error); 
+              private rickyMortyService:RickyMortyBdService) {
+    this.activatedRoute.params.subscribe((params) => {    
+      this.unIdPersonaje = params['id'];
+      console.log("IdPersonaje_page2:",this.unIdPersonaje);
+      this.cargarPersonajeId();
     });
   }
+  
+  ngOnInit() {
+  }
 
+  async cargarPersonajeId(){
+    await this.rickyMortyService.getPersonajeId(this.unIdPersonaje).toPromise().then((resp:any)=>{
+      this.personaje = resp;
+      console.log("MI_PERSONAJE",this.personaje);
+    })
+  }
 }
