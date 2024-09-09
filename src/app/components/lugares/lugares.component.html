@@ -1,3 +1,7 @@
+<ion-grid>
+  <ion-row>
+    <ion-col sizeMd="4" offsetMd="4">
+
 <ion-card>
   <ion-card-header>
     <ion-card-title>{{titulo}}</ion-card-title>
@@ -7,7 +11,19 @@
     <ion-list>
       <ion-item *ngFor="let lugar of listaLugares">{{lugar.id}}
         <ion-label>{{lugar.name}}</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="irALugar(lugar.id)">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+          <ion-button>
+            <ion-icon name="heart-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-item>
     </ion-list>
   </ion-card-content>
 </ion-card>
+
+</ion-col>
+</ion-row>
+</ion-grid>

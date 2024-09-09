@@ -44,5 +44,16 @@ export class RickyMortyBdService {
         })
       );
     }
+
+    getLocationId(id:number):any{
+      let url = `${URL_RM}/location/${id}`;
+
+      return this.http.get(url, {}).pipe(
+        map((res: any) => {
+          console.log('LOCATION',res);
+          return res;
+        })
+      );
+    }
   
 }

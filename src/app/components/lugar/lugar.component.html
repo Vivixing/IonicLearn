@@ -1,0 +1,27 @@
+<ion-grid>
+  <ion-row>
+    <ion-col sizeMd="4" offsetMd="4">
+      <div *ngIf="lugar">
+
+<ion-card>
+  <ion-card-content class="ion-text-center">
+    <ion-card-title>{{lugar.name}}</ion-card-title>
+    <p>type: {{lugar.type}}</p>
+    <p>dimension: {{lugar.dimension}}</p>
+    <h2>Personajes en el lugar</h2>
+      <ion-list>
+        <ion-item *ngFor="let personaje of personajes">
+          <ion-avatar slot="start">
+            <img [src]="personaje.image" />
+          </ion-avatar>
+          <ion-label>{{ personaje.name }}</ion-label>
+        </ion-item>
+      </ion-list>
+    <p> created: {{lugar.created}}</p>
+  </ion-card-content>
+</ion-card>
+
+</div>
+</ion-col>
+</ion-row>
+</ion-grid>
