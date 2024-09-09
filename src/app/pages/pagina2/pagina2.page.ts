@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
-import { RickyMortyServiceService } from 'src/app/services/ricky-morty-service.service';
 
 
 @Component({
