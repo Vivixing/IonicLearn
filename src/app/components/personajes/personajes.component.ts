@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 
@@ -14,7 +15,8 @@ export class PersonajesComponent implements OnInit {
   @Input() titulo:string = '';
   @Input() subTitulo:string = '';
 
-  constructor(private router:Router) { 
+  constructor(private router:Router,
+              private storageService:StorageService) { 
     
   }
 
@@ -25,6 +27,11 @@ export class PersonajesComponent implements OnInit {
   irAPersonaje(idPersonaje:number){
     console.log('IDPERSONAJE',idPersonaje);
     this.router.navigate(['/personaje',idPersonaje]);
+  }
+
+  addFavorito(personaje:any){
+    console.log('FavoritePersonaje',personaje);
+    this.storageService.agregarRemoverPersonaje(personaje);
   }
 
 }
