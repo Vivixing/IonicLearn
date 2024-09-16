@@ -55,5 +55,20 @@ export class RickyMortyBdService {
         })
       );
     }
+
+    getMorePersonajes(next_url:string):any{
+      let url = `${URL_RM}/character`;
+
+      if(next_url.length > 0){
+        url = `${next_url}`
+      }
+
+      return this.http.get(url, {}).pipe(
+        map((res: any) => {
+          console.log('MOREPERSONAJES_PK',res);
+          return res;
+        })
+      );
+    }
   
 }

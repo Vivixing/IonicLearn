@@ -13,4 +13,8 @@
     </ion-toolbar>
   </ion-header>
   <app-personajes [listaPersonajes]="personajes" [titulo]="'Personajes'" [subTitulo]="'RickyAndMorty'"></app-personajes>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más personajes...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

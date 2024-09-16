@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 
 
@@ -18,7 +19,7 @@ export class PersonajesComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   irAPersonaje(idPersonaje:number){
