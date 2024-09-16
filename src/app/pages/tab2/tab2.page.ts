@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
 export class Tab2Page implements OnInit{
   //Variable donde se maneja la lista de Ubicaciones
   ubicaciones:any[]=[];
+  url_next:string='';
   //Injección dependencias del servicio
   constructor(private bd:RickyMortyBdService) {}
   
@@ -21,7 +23,28 @@ export class Tab2Page implements OnInit{
     await this.bd.getAllLocations().toPromise().then((res:any)=>{
       this.ubicaciones=res.results;
       console.log('MISUBICACIONES',this.ubicaciones);
+
+      this.url_next=res.info.next;
+      console.log('URL_NEXT',this.url_next);
     })
+  }
+
+  //Cargar ubicaciones siguientes para el scroll infinito
+  async cargarUbicacionesSiguientes(){
+    await this.bd.getMoreLugares(this.url_next).toPromise().then((res:any)=>{
+      let masLugares = res.results;
+      this.ubicaciones.push(...masLugares);
+      this.url_next=res.info.next;
+      console.log('SiguienteLugar',this.url_next);
+    });
+  }
+
+  //Método que se ejecuta al hacer scroll
+  onIonInfinite(ev:any) {
+    this.cargarUbicacionesSiguientes();
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
   
 

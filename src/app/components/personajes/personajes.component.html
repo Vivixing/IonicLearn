@@ -19,10 +19,11 @@
         </ion-card-header>
         <ion-buttons slot="end">
           <ion-button (click)="irAPersonaje(personaje.id)">
-            <ion-icon name="chevron-forward-outline"></ion-icon>
+            <ion-icon name="chevron-forward-outline" slot="icon-only"></ion-icon>
           </ion-button>
           <ion-button (click)="addFavorito(personaje)" size="large">
-            <ion-icon name="heart-outline" slot="icon-only"></ion-icon>
+            <ion-icon *ngIf="!esFavorito(personaje)" name="heart-outline" slot="icon-only"></ion-icon>
+            <ion-icon *ngIf="esFavorito(personaje)" name="heart" slot="icon-only"></ion-icon>
           </ion-button>
         </ion-buttons>
       </ion-item>

@@ -34,4 +34,8 @@ export class PersonajesComponent implements OnInit {
     this.storageService.agregarRemoverPersonaje(personaje);
   }
 
+  esFavorito(personaje:any):boolean{
+    return this.storageService.personajeInFavoritos(personaje);
+  }
+
 }

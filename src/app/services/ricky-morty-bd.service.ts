@@ -70,5 +70,20 @@ export class RickyMortyBdService {
         })
       );
     }
+
+    getMoreLugares(next_url:string):any{
+      let url = `${URL_RM}/location`;
+
+      if(next_url.length > 0){
+        url = `${next_url}`
+      }
+
+      return this.http.get(url, {}).pipe(
+        map((res: any) => {
+          console.log('MORELOCATIONS_PK',res);
+          return res;
+        })
+      );
+    }
   
 }

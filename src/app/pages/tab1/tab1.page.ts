@@ -38,7 +38,7 @@ export class Tab1Page {
       let masPersonajes = res.results;
       this.personajes.push(...masPersonajes);
       this.url_next=res.info.next;
-      console.log('MISPERSONAJES',this.url_next);
+      console.log('SiguientePersonaje',this.url_next);
     });
   }
 
