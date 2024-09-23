@@ -7,12 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-favoritos></app-favoritos>
+  <app-favoritos [listaFavoritos]="favoriteCharacters" [titulo]="'Favoritos'" [subtitulo]="'RickyAndMorty'" ></app-favoritos>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Favoritos</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Favoritos page"></app-explore-container>
 </ion-content>
