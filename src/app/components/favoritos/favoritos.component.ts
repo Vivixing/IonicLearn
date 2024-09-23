@@ -14,7 +14,12 @@ export class FavoritosComponent  implements OnInit {
 
   constructor(private storageService: StorageService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Suscribirse a los cambios en la lista de personajes favoritos
+    this.storageService.getFavoritos().subscribe(personajes => {
+      this.listaFavoritos = personajes;
+    });
+  }
 
   esFavorito(personaje:any):boolean{
     return this.storageService.personajeInFavoritos(personaje);
