@@ -22,6 +22,16 @@ export class RickyMortyBdService {
         })
       );
     }
+
+    searchPersonajeByName(txt:string):any{
+      let url = `${URL_RM}/character/?name=${txt}`; //Buscar personaje por nombre
+      return this.http.get(url, {}).pipe(
+        map((res: any) => {
+          console.log('PERSONAJES_BUSCADOS',res);
+          return res;
+        })
+      );
+    }
     
     getPersonajeId(id:number):any{
       let url = `${URL_RM}/character/${id}`;

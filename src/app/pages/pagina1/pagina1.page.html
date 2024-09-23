@@ -11,5 +11,17 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-searchbar animated="true" placeholder="Buscador"></ion-searchbar>
+   <!-- Campo de búsqueda -->
+   <ion-searchbar [(ngModel)]="searchTxt" (ionInput)="buscarPersonaje()"></ion-searchbar>
+
+   <!-- Lista de personajes -->
+   <ion-list *ngIf="!buscando">
+     <ion-item *ngFor="let personaje of personajes">
+       {{ personaje.name }}
+     </ion-item>
+   </ion-list>
+ 
+   <!-- Mensaje de carga o error -->
+   <ion-spinner *ngIf="buscando"></ion-spinner>
+   <p *ngIf="!buscando && personajes.length === 0">No se encontraron personajes</p>
 </ion-content>
