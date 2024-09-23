@@ -8,7 +8,7 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-item *ngFor="let favorito of listaFavoritos">{{favorito.id}}
+      <ion-item *ngFor="let favorito of listaFavoritos">
         <ion-thumbnail>
           <img alt="Img Favorito" [src]="favorito.image"/>
         </ion-thumbnail>
@@ -17,7 +17,7 @@
           <ion-card-subtitle>{{favorito.species}}</ion-card-subtitle>
         </ion-card-header>
         <ion-buttons slot="end">
-          <ion-button>
+          <ion-button (click)="addFavorito(favorito)" size="large" >
             <ion-icon *ngIf="!esFavorito(favorito)" name="heart-outline" slot="icon-only"></ion-icon>
             <ion-icon *ngIf="esFavorito(favorito)" name="heart" slot="icon-only"></ion-icon>
           </ion-button>

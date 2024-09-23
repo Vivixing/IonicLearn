@@ -19,4 +19,9 @@ export class FavoritosComponent  implements OnInit {
   esFavorito(personaje:any):boolean{
     return this.storageService.personajeInFavoritos(personaje);
   }
+
+  addFavorito(personaje:any){
+    console.log('FavoritePersonaje',personaje);
+    this.storageService.agregarRemoverPersonaje(personaje);
+  }
 }
