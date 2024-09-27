@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Buscar</ion-title>
+    <ion-title class="ion-text-center">Buscar</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,17 +11,10 @@
     </ion-toolbar>
   </ion-header>
 
-   <!-- Campo de búsqueda -->
-   <ion-searchbar [(ngModel)]="searchTxt" (ionInput)="buscarPersonaje()"></ion-searchbar>
-
-   <!-- Lista de personajes -->
-   <ion-list *ngIf="!buscando">
-     <ion-item *ngFor="let personaje of personajes">
-       {{ personaje.name }}
-     </ion-item>
-   </ion-list>
- 
-   <!-- Mensaje de carga o error -->
-   <ion-spinner *ngIf="buscando"></ion-spinner>
-   <p *ngIf="!buscando && personajes.length === 0">No se encontraron personajes</p>
+  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  <app-personajes [listaPersonajes]="personajes" ></app-personajes>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más personajes...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

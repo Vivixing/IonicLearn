@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { URL_RM } from '../config/url.servicios';
-import { map} from 'rxjs';
+import { map, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class RickyMortyBdService {
       );
     }
 
-    searchPersonajeByName(txt:string):any{
+    searchPersonajeByName(txt:string): Observable<any>{
       let url = `${URL_RM}/character/?name=${txt}`; //Buscar personaje por nombre
       return this.http.get(url, {}).pipe(
         map((res: any) => {

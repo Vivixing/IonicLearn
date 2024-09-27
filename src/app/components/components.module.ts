@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
 import { RouterModule } from "@angular/router";
@@ -9,13 +9,15 @@ import { LugaresComponent } from "./lugares/lugares.component";
 import { FavoritosComponent } from "./favoritos/favoritos.component";
 import { LugarComponent } from "./lugar/lugar.component";
 
+
 @NgModule({
   declarations: [
     PersonajeComponent, 
     PersonajesComponent, 
     LugaresComponent,
     LugarComponent,
-    FavoritosComponent],
+    FavoritosComponent
+    ],
   imports: [
     CommonModule, 
     IonicModule,
@@ -25,6 +27,8 @@ import { LugarComponent } from "./lugar/lugar.component";
     PersonajesComponent,
     LugaresComponent,
     LugarComponent,
-    FavoritosComponent],
+    FavoritosComponent
+    ],
+
 }) 
 export class ComponentsModule {}
