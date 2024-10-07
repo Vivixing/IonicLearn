@@ -5,14 +5,10 @@
  * the entire app and not just one component. Additionally, this file can be
  * used as an entry point to import other CSS/Sass files to be included in the
  * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
@@ -25,13 +21,128 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* Dark Mode */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Global styles */
+
+.barcode-scanning-modal {
+  visibility: visible;
+}
+
+body.barcode-scanning-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .barcode-scanning-active {
+    visibility: hidden;
+    --background: transparent;
+    --ion-background-color: transparent;
+  }
+}
+
+:root {
+  --ion-color-primary: #ffffff;
+  --ion-background-color: #000000;
+  --ion-text-color: #ffffff;
+
+  --ion-tab-bar-background: #000000;
+  --ion-tab-bar-color: #b3b3b3;
+  --ion-tab-bar-color-active: #ffffff;
+}
+
+/* Dark mode customizations */
+@media (prefers-color-scheme: dark) {
+  /* You can further customize dark mode colors here */
+}
+
+/* Tab Bar Styles */
+.ion-tab-bar {
+  background-color: var(--ion-tab-bar-background);
+}
+
+.ion-tab-button {
+  color: var(--ion-tab-bar-color);
+}
+
+.ion-tab-button.ion-selected {
+  color: var(--ion-tab-bar-color-active);
+}
+
+/* Header styles */
+ion-header ion-title,
+ion-header ion-button {
+  color: #ffffff; /* Color for header title and buttons */
+}
+
+/* Content styles */
+ion-content {
+  --color: #ffffff; /* Text color */
+}
+
+/* Card styles */
+ion-card {
+  --background: #1e1e1e; /* Dark background for the card */
+  --color: #ffffff; /* Text color in the card */
+}
+
+ion-card-header,
+ion-card-title,
+ion-card-subtitle {
+  color: #ffffff; /* Text color for titles and subtitles */
+}
+
+/* Item styles */
+ion-item {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el contenido */
+  justify-content: space-between; /* Espacio entre el contenido */
+  --color: #ffffff; /* Text color for items */
+}
+
+/* Thumbnail styles */
+ion-thumbnail img {
+  border-radius: 50%; /* Make the image circular */
+  width: 50px; /* Ajusta el ancho según lo que consideres adecuado */
+  height: 50px; /* Ajusta la altura para mantener la proporción */
+  object-fit: cover; /* Mantiene la relación de aspecto */
+}
+
+/* Grid and layout styles */
+ion-grid,
+ion-row,
+ion-col {
+  --background: #1e1e1e; /* Dark background for the grid layout */
+  --color: #ffffff; /* Text color */
+}
+
+/* Button styles */
+ion-button {
+  --background: transparent;
+  --color: #ffffff; /* Button text color */
+  --min-height: 32px; /* Ajusta la altura mínima */
+  --padding: 4px 8px; /* Ajusta el padding */
+}
+
+ion-buttons ion-button ion-icon,
+ion-icon {
+  --color: #ffffff; /* Color for icons */
+  font-size: 20px; /* Ajusta el tamaño de los íconos */
+}
+
+/* Card Text Sizes */
+ion-card-title {
+  font-size: 16px; /* Cambia este valor según necesites */
+}
+
+ion-card-subtitle {
+  font-size: 14px; /* Cambia este valor según necesites */
+}
+
+/* Rounded border style */
+.rounded-border {
+  border-radius: 10px; /* Puedes ajustar el valor para más o menos redondez */
+}

@@ -43,6 +43,16 @@ export class RickyMortyBdService {
         })
       );
     }
+//ir a personaje escaneado, el scanner proporciona la url
+    irAPersonaje(url:string):any{
+    
+      return this.http.get(url, {}).pipe(
+        map((res: any) => {
+          console.log('PERSONAJE',res);
+          return res;
+        })
+      );
+    }
 
     getAllLocations():any{
       let url = `${URL_RM}/location`;

@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'lugar/:id',
     loadChildren: () => import('./pages/pagina3/pagina3.module').then( m => m.Pagina3PageModule)
+  },
+  {
+    path: 'scanner',
+    loadChildren: () => import('./pages/pagina4/pagina4.module').then( m => m.Pagina4PageModule)
   }
 ];
 @NgModule({

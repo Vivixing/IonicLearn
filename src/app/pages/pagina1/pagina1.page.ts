@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
