@@ -17,7 +17,11 @@ const routes: Routes = [
   {
     path: 'lugar/:id',
     loadChildren: () => import('./pages/pagina3/pagina3.module').then( m => m.Pagina3PageModule)
+  },  {
+    path: 'barcode-scanner',
+    loadChildren: () => import('./pages/barcode-scanner/barcode-scanner.module').then( m => m.BarcodeScannerPageModule)
   }
+
 ];
 @NgModule({
   imports: [

@@ -21,6 +21,9 @@ const routes: Routes = [
       },{
         path: 'tab4',
         loadChildren: () => import('../pagina1/pagina1.module').then(m => m.Pagina1PageModule)
+      },{
+        path: 'barcode-scanner',
+        loadChildren: () => import('../barcode-scanner/barcode-scanner.module').then( m => m.BarcodeScannerPageModule)
       },
       {
         path: '',
