@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
+import { Geolocation, Position } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-barcode-scanner',
@@ -12,12 +13,31 @@ export class BarcodeScannerPage implements OnInit {
    //Barcodescanner
    isSupported = false;
    barcodes: Barcode[] = [];
+   coordenadas: Position[] = [];
 
   constructor(private alertController: AlertController) { }
 
   ngOnInit() {
     BarcodeScanner.isSupported().then((result) => {
       this.isSupported = result.supported;
+    });
+  }
+
+  //Método para obtener la ubicación
+  async printCurrentPosition() {
+    const coordinates = await Geolocation.getCurrentPosition();
+    this.coordenadas.push(coordinates);
+    console.log('Current position:', coordinates);
+  };
+
+  //Método para visualizar la ubicación en tiempo real de la lista de coordenadas
+  async watchPosition() {
+    const wait = Geolocation.watchPosition({}, (position, err) => {
+      if (err) {
+        console.error('Could not fetch position', err);
+        return;
+      }
+      console.log('Watch position:', position);
     });
   }
 
@@ -30,6 +50,7 @@ export class BarcodeScannerPage implements OnInit {
     }
     const { barcodes } = await BarcodeScanner.scan();
     this.barcodes.push(...barcodes);
+    this.printCurrentPosition();
   }
   
   async requestPermissions(): Promise<boolean> {

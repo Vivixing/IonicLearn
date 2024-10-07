@@ -41,5 +41,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- To get access to the flashlight. -->
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <!-- To get access to the actualLocation. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    <!-- Feautres -->
+
+    <uses-feature android:name="android.hardware.location.gps" />
 
 </manifest>

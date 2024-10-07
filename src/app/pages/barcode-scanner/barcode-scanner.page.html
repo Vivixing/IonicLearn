@@ -10,6 +10,24 @@
       <ion-title size="large">Código QR</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!-- Botón para obtener la ubicación actual -->
+  <ion-button expand="full" (click)="printCurrentPosition()">
+    Obtener ubicación actual
+  </ion-button>
+  
+  <!-- Botón para iniciar el monitoreo de la ubicación -->
+  <ion-button expand="full" (click)="watchPosition()">
+    Monitorear ubicación
+  </ion-button>
+
+  <!-- Lista para mostrar coordenadas obtenidas -->
+  <ion-list>
+    <ion-item *ngFor="let coord of coordenadas">
+      Latitude: {{ coord.coords.latitude }}, Longitude: {{ coord.coords.longitude }}
+    </ion-item>
+  </ion-list>
+  
+  <!-- Lista para mostrar códigos de barras escaneados -->
   <ion-list>
     <ion-item *ngFor="let barcode of barcodes">
       <ion-label position="stacked">{{ barcode.format }}</ion-label>
@@ -21,4 +39,5 @@
       <ion-icon name="scan"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
 </ion-content>
