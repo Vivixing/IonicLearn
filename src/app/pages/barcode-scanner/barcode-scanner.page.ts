@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
 import { Geolocation, Position } from '@capacitor/geolocation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barcode-scanner',
@@ -13,22 +14,33 @@ export class BarcodeScannerPage implements OnInit {
    //Barcodescanner
    isSupported = false;
    barcodes: Barcode[] = [];
+   //Arreglo para almacenar las coordenadas
    coordenadas: Position[] = [];
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private router:Router) { }
 
   ngOnInit() {
+    this.installGoogleBarcodeScannerModule();
+    // Verificar si el escáner es soportado en el dispositivo
     BarcodeScanner.isSupported().then((result) => {
       this.isSupported = result.supported;
     });
   }
 
+  async installGoogleBarcodeScannerModule() {
+    await BarcodeScanner.installGoogleBarcodeScannerModule();
+  };
+
   //Método para obtener la ubicación
   async printCurrentPosition() {
-    const coordinates = await Geolocation.getCurrentPosition();
-    this.coordenadas.push(coordinates);
-    console.log('Current position:', coordinates);
-  };
+    try{
+      const coordinates = await Geolocation.getCurrentPosition();
+      this.coordenadas.push(coordinates); //Guarda la ubicación actual
+      console.log('Current position:', coordinates);
+    }catch(err){
+      console.error('Could not fetch position', err);
+    }
+  }
 
   //Método para visualizar la ubicación en tiempo real de la lista de coordenadas
   async watchPosition() {
@@ -37,7 +49,10 @@ export class BarcodeScannerPage implements OnInit {
         console.error('Could not fetch position', err);
         return;
       }
-      console.log('Watch position:', position);
+      if (position) {
+        this.coordenadas.push(position); //Guarda la ubicación actual
+        console.log('Watch position:', position);
+      }
     });
   }
 
@@ -50,9 +65,18 @@ export class BarcodeScannerPage implements OnInit {
     }
     const { barcodes } = await BarcodeScanner.scan();
     this.barcodes.push(...barcodes);
-    this.printCurrentPosition();
   }
-  
+
+  // Método para mostrar alerta si el código es inválido
+  async presentAlertMessage(message: string): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
   async requestPermissions(): Promise<boolean> {
     const { camera } = await BarcodeScanner.requestPermissions();
     return camera === 'granted' || camera === 'limited';

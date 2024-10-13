@@ -28,7 +28,7 @@
   </ion-list>
   
   <!-- Lista para mostrar códigos de barras escaneados -->
-  <ion-list>
+  <ion-list *ngIf="barcodes.length > 0">
     <ion-item *ngFor="let barcode of barcodes">
       <ion-label position="stacked">{{ barcode.format }}</ion-label>
       <ion-input type="text" [value]="barcode.rawValue"></ion-input>

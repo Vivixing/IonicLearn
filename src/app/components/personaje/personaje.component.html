@@ -6,12 +6,12 @@
           <ion-card-content class="ion-text-center">
             <img src="{{personaje.image}}" />
             <ion-card-title>{{personaje.name}}</ion-card-title>
-            <p>status: {{personaje.status}}</p>
-            <p>species: {{personaje.species}}</p>
-            <p>type: {{personaje.type}}</p>
-            <p>gender: {{personaje.gender}}</p>
-            <p>origin: {{personaje.origin.name}}</p>
-            <p>location: {{personaje.location.name}}</p>
+            <p>Status: {{personaje.status}}</p>
+            <p>Species: {{personaje.species}}</p>
+            <p>Type: {{personaje.type ? personaje.type : 'NaN'}}</p>
+            <p>Gender: {{personaje.gender}}</p>
+            <p>Origin: {{personaje.origin.name}}</p>
+            <p>Location: {{personaje.location.name}}</p>
           </ion-card-content>
         </ion-card>
       </div>
