@@ -25,12 +25,12 @@ export class PersonajesComponent implements OnInit {
   }
 
   irAPersonaje(idPersonaje:number){
-    console.log('IDPERSONAJE',idPersonaje);
+    //console.log('IDPERSONAJE',idPersonaje);
     this.router.navigate(['/personaje',idPersonaje]);
   }
 
   addFavorito(personaje:any){
-    console.log('FavoritePersonaje',personaje);
+   // console.log('FavoritePersonaje',personaje);
     this.storageService.agregarRemoverPersonaje(personaje);
   }
 

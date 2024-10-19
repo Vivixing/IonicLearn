@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Escaneados</ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="large" href="/scanner">
+        <ion-icon aria-hidden="true" name="camera" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let escaneado of escaneados">
+      <ion-label>
+        <ion-thumbnail>
+          <img alt="Imagen de personaje" src="{{escaneado.personaje.image}}"  />
+        </ion-thumbnail>
+        <!--<img src="{{escaneado.personaje.image}}" class="rounded-border"/> -->
+        <h2>{{ escaneado.personaje.name }}</h2>
+        <p>{{ formatFecha(escaneado.timestamp) }}</p>
+        
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+   
+  <!-- Botón para ver el mapa -->
+  <ion-button routerLink="/mapa" expand="full">Ver Mapa</ion-button>
+
+  <!-- Botón para limpiar escaneados -->
+  <div style="display: flex; justify-content: center; margin: 20px;">
+    <ion-button 
+      (click)="limpiarEscaneados()" 
+      color="danger" 
+      style="border-radius: 20px; --padding-start: 16px; --padding-end: 16px;">
+      Limpiar Escaneados
+    </ion-button>
+  </div>
+
+
+</ion-content>
+

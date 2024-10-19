@@ -22,10 +22,10 @@ export class Tab2Page implements OnInit{
   async cargarUbicaciones(){
     await this.bd.getAllLocations().toPromise().then((res:any)=>{
       this.ubicaciones=res.results;
-      console.log('MISUBICACIONES',this.ubicaciones);
+      //console.log('MISUBICACIONES',this.ubicaciones);
 
       this.url_next=res.info.next;
-      console.log('URL_NEXT',this.url_next);
+      //console.log('URL_NEXT',this.url_next);
     })
   }
 
@@ -35,7 +35,7 @@ export class Tab2Page implements OnInit{
       let masLugares = res.results;
       this.ubicaciones.push(...masLugares);
       this.url_next=res.info.next;
-      console.log('SiguienteLugar',this.url_next);
+      //console.log('SiguienteLugar',this.url_next);
     });
   }
 

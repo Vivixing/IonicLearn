@@ -32,7 +32,13 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "localforage",
+              "qrcode",
+              "html2canvas",
+              "leaflet"
+            ]
           },
           "configurations": {
             "production": {

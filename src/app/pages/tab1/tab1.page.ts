@@ -25,10 +25,10 @@ export class Tab1Page {
   async cargarPersonajes(){
     await this.bd.getAllPersonajes().toPromise().then((res:any)=>{
       this.personajes=res.results;
-      console.log('MISPERSONAJES',this.personajes);
+      //console.log('MISPERSONAJES',this.personajes);
 
       this.url_next=res.info.next;
-      console.log('URL_NEXT',this.url_next);
+      //console.log('URL_NEXT',this.url_next);
     });
   }
 
@@ -38,7 +38,7 @@ export class Tab1Page {
       let masPersonajes = res.results;
       this.personajes.push(...masPersonajes);
       this.url_next=res.info.next;
-      console.log('SiguientePersonaje',this.url_next);
+      //console.log('SiguientePersonaje',this.url_next);
     });
   }
 

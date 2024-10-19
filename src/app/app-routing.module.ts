@@ -21,6 +21,14 @@ const routes: Routes = [
   {
     path: 'scanner',
     loadChildren: () => import('./pages/pagina4/pagina4.module').then( m => m.Pagina4PageModule)
+  },
+  {
+    path: 'tab4',
+    loadChildren: () => import('./pages/tab4/tab4.module').then( m => m.Tab4PageModule)
+  },
+  {
+    path: 'mapa',
+    loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule)
   }
 ];
 @NgModule({

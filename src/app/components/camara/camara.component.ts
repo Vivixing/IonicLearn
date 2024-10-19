@@ -132,4 +132,6 @@ export class CamaraComponent
     document.querySelector('body')?.classList.remove('barcode-scanning-active');
     await BarcodeScanner.stopScan();
   }
+
+ 
 }

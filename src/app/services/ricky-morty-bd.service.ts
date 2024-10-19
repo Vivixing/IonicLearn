@@ -17,7 +17,7 @@ export class RickyMortyBdService {
   
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('PERSONAJES',res);
+          //console.log('PERSONAJES',res);
           return res;
         })
       );
@@ -27,7 +27,7 @@ export class RickyMortyBdService {
       let url = `${URL_RM}/character/?name=${txt}`; //Buscar personaje por nombre
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('PERSONAJES_BUSCADOS',res);
+          //console.log('PERSONAJES_BUSCADOS',res);
           return res;
         })
       );
@@ -38,7 +38,16 @@ export class RickyMortyBdService {
 
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('PERSONAJE',res);
+          //console.log('PERSONAJE',res);
+          return res;
+        })
+      );
+    }
+
+    getPersonajeUrl(url:string):any{
+      return this.http.get(url, {}).pipe(
+        map((res: any) => {
+          //console.log('PERSONAJE',res);
           return res;
         })
       );
@@ -48,7 +57,7 @@ export class RickyMortyBdService {
     
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('PERSONAJE',res);
+          //console.log('PERSONAJE',res);
           return res;
         })
       );
@@ -59,7 +68,7 @@ export class RickyMortyBdService {
 
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('LOCATIONS',res);
+          //console.log('LOCATIONS',res);
           return res;
         })
       );
@@ -70,7 +79,7 @@ export class RickyMortyBdService {
 
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('LOCATION',res);
+          //console.log('LOCATION',res);
           return res;
         })
       );
@@ -85,7 +94,7 @@ export class RickyMortyBdService {
 
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('MOREPERSONAJES_PK',res);
+          //console.log('MOREPERSONAJES_PK',res);
           return res;
         })
       );
@@ -100,7 +109,7 @@ export class RickyMortyBdService {
 
       return this.http.get(url, {}).pipe(
         map((res: any) => {
-          console.log('MORELOCATIONS_PK',res);
+          //console.log('MORELOCATIONS_PK',res);
           return res;
         })
       );
